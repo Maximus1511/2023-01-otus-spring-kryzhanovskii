@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="csvLoader" class="spring.otus.kryzh.hometask1.classes.CsvLoader">
+      <property name="pathToCsvFile" value="questions.csv"/>
+   </bean>
+
+   <bean id="blank" class="spring.otus.kryzh.hometask1.classes.Blank">
+      <constructor-arg value="Kryzhanovskii"/>
+      <property name="csvLoader" ref="csvLoader"/>
+   </bean>
+
+   <bean id="student" class="spring.otus.kryzh.hometask1.classes.Student">
+
+   </bean>
+</beans>
