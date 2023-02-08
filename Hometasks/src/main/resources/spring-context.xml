@@ -4,16 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-   <bean id="csvLoader" class="spring.otus.kryzh.hometask1.classes.CsvLoader">
-      <property name="pathToCsvFile" value="questions.csv"/>
-   </bean>
+    <bean id="csvLoader" class="spring.otus.kryzh.hometask1.classes.CsvLoader">
+        <property name="pathToCsvFile" value="questions.csv"/>
+    </bean>
 
-   <bean id="blank" class="spring.otus.kryzh.hometask1.classes.Blank">
-      <constructor-arg value="Kryzhanovskii"/>
-      <property name="csvLoader" ref="csvLoader"/>
-   </bean>
-
-   <bean id="student" class="spring.otus.kryzh.hometask1.classes.Student">
-
-   </bean>
+    <bean id="questionDaoImp" class="spring.otus.kryzh.hometask1.classes.QuestionDaoImpl">
+        <property name="csvLoader" ref="csvLoader"/>
+    </bean>
 </beans>
