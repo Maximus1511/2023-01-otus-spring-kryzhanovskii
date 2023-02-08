@@ -10,19 +10,19 @@ import java.util.List;
 public class QuestionDaoImpl implements QuestionsDao {
 
     private CsvLoader csvLoader;
+
     @Override
     public List<Question> findAll() {
         List<Question> questions = new ArrayList<>();
         String allData = csvLoader.readFromInputStream();
         String[] rows = allData.split("\n");
         for (int i = 0; i < rows.length; i++) {
-            String[] columns = rows[i].split(",");
-            Question question =  new Question();
+            String[] columns = rows[i].split("\\?,");
+            Question question = new Question();
             question.setStatement(columns[0]);
             question.setQuestionNumber(i);
             questions.add(question);
         }
-        System.out.println(questions);
         return questions;
     }
 }

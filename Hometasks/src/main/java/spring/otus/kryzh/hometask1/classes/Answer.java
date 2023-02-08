@@ -12,10 +12,26 @@ public class Answer {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder =  new StringBuilder();
+        findCorrectAnswer();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < allAnswers.size(); i++) {
-            stringBuilder.append("\t"+ (i + 1) + ". " + allAnswers.get(i) + "\n");
+            if (showCorrectAnswer) {
+                stringBuilder.append("\t" + (i + 1) + ". " + allAnswers.get(i) + "\n");
+            } else {
+                stringBuilder.append("\t" + (i + 1) + ". " + allAnswers.get(i).split("\\(correct\\)")[0] + "\n");
+            }
+
         }
         return stringBuilder.toString();
+    }
+
+    public void findCorrectAnswer() {
+        for (String singleAnswer : allAnswers) {
+            String[] array = singleAnswer.split("(\\*)");
+            if (array.length > 1) {
+                correctAnswer = array[1];
+                break;
+            }
+        }
     }
 }
